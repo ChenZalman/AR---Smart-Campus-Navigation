@@ -1,0 +1,81 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.Login {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #282c34;
+    padding: 30px;
+  }
+
+.LoginBox {
+    display: grid;
+    text-align: center;
+    margin: auto;
+    height: 220px;
+    width: 400px;
+    background-color: #282c34;
+    padding-bottom: 50px;
+  }
+
+  .LoginButton{
+    width: 180px;
+    margin:auto;
+  }
+
+@font-face {
+    font-family: AbrilFatface-Regular;
+    src: url(./fonts/AbrilFatface-Regular.ttf);
+  }
+  
+  .Title {
+    /* color: #BEC5AD; */
+    color: #007279;
+    font-size: 80px;
+    font-family: AbrilFatface-Regular;
+  }
+
+  .text {
+    color: #000;
+  }
+
+  .padding {
+    height: 5px;
+  }
+
+  body {
+    background-color: #282c34;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: Arial;
+    text-align: left;
+  }
+
+  li {
+    float: left;
+    display: block;
+    padding: 8px;
+    /* background-color: #282c34; */
+  }
+  
+  a {
+    display: block;
+    padding: 8px;
+    background-color: #3B5249;
+  }
+
+  ul {
+    /* background-color: #BEC5AD; */
+    background-color: #3B5249
+  }
+
+  colors{
+    color: #3B5249;
+    color: #282c34;
+    color: #007279;
+    color: #000;
+  }
