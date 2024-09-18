@@ -1,20 +1,66 @@
 //import './App.css'
 import './Login.css'
 import { useState } from 'react';
+import NavBar from './NavBar';
+import { Link } from 'react-router-dom';
 
-export default function LoginPage(){
-    const [email, setEmail] = useState('exapmle@Domain');
+ export default function LoginPage(){
+    const [email, setEmail] = useState('');
     const [password, setpassword] = useState('');
-    const [passworddisplay, setpassworddisplay] = useState('********');
+    const [passworddisplay, setpassworddisplay] = useState('');
+    
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        console.log(email);
+        fetch('ar-project-server',{
+            method: `POST`,
+            headers: {"Content-Type": "application/json"},
+            body: {email,password}
+        }
+        ).then(() =>{ 
+        setEmail('');
+        setpassword('');})
+    }
+
     return (
         <div className='Login'>
+            <h1 className='Title'>AR - SMART CAMPUS NAVIGATION</h1>
+            <form className='LoginBox' onSubmit={handleSubmit}>
+                <p>Enter your cedentials:</p>
+                <div className= 'padding'></div>
+                    <div>
+                        Email: <input placeholder='exapmle@Domain' value={email} onChange={e => setEmail(e.target.value)} required/>
+                        <p>{email}</p>
+                    </div>
+                    <div>
+                        Password: <input placeholder='password' value={password} onChange={e => setpassword(e.target.value)} required/>
+                        <p>{password}</p>
+                    </div>
+                    {/* <spacer className='padding'></spacer> */}
+                <Link to='./ForgotPasswordPage.js' className='forgotpassword'>forgot password?</Link>
+                <div className= 'padding'></div>
+                <div className='LoginButton'>
+                    <button>Login</button>
+                </div>
+                <div className= 'padding'></div>
+                <div>
+                    <Link to='./RegisterPage.js'>Don't have an account? Register</Link>
+                </div>
+                <Link to='./TeramofServicePage.js'>Terms of service</Link>
+            </form>
+        </div>
+    )
+}
+
+{/* ------This is the old version of the page appearence-------
+    <div className='Login'>
             <ul>
             <li><a href="/HomePage">Home</a></li>
             <li><a href="contact.asp">Contact</a></li>
             <li><a href="about.asp">About</a></li>
             </ul>
             <p className='Title'>AR - SMART CAMPUS NAVIGATION</p>
-            <div className='LoginBox'>
+            <form className='LoginBox'>
                 <p>Enter your cedentials:</p>
                 <div className= 'padding'></div>
                     <div>
@@ -34,7 +80,6 @@ export default function LoginPage(){
                     <a href='./RegisterPage.js'>Don't have an account? Register</a>
                 </div>
                 <a href='./TeramofServicePage.js'>Terms of service</a>
-            </div>
+            </form>
         </div>
-    )
-}
+         */}

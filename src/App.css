@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -14,6 +14,9 @@
 }
 
 .App-header {
+  border: #ff0000;
+  border-style: solid;
+  border-width: 5px;
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -38,6 +41,9 @@
 }
 
 body {
+  border: #ff0000;
+  border-style: solid;
+  border-width: 5px;
   background-color: #282c34;
   color: white;
   padding: 40px;
@@ -57,3 +63,4 @@ body {
   font-family: AbrilFatface-Regular;
   text-align: center;
 }
+ */

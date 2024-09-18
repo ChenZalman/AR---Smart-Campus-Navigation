@@ -1,23 +1,29 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 .Login {
+    border: #ffff00;
+    border-style: solid;
+    border-width: 5px;
     display: flex;
     flex-wrap: wrap;
-    background-color: #282c34;
+    /* background-color: #3B5249; */
     padding: 30px;
   }
 
 .LoginBox {
-    display: grid;
+    border: #ff0000;
+    border-style: solid;
+    border-width: 5px;
+    /* display: grid; */
     text-align: center;
     margin: auto;
     height: 220px;
     width: 400px;
-    background-color: #282c34;
+    /* background-color: #3B5249; */
     padding-bottom: 50px;
   }
 
@@ -32,8 +38,11 @@
   }
   
   .Title {
+    border: #ff00ff;
+    border-style: solid;
+    border-width: 5px;
     /* color: #BEC5AD; */
-    color: #007279;
+    color: #282c34;
     font-size: 80px;
     font-family: AbrilFatface-Regular;
   }
@@ -43,14 +52,19 @@
   }
 
   .padding {
+    background-color: #00ff00;
+    /* border-style: solid;
+    border-width: 5px; */
     height: 5px;
   }
 
   body {
-    background-color: #282c34;
+    /* background-color: #282c34; */
+    border: #ff0000;
+    border-width: 50px;
     display: flex;
     align-items: center;
-    color: white;
+    color: #000000;
     font-family: Arial;
     text-align: left;
   }
@@ -63,12 +77,18 @@
   }
   
   a {
+    border: #000000;
+    border-style: solid;
+    border-width: 5px;
     display: block;
     padding: 8px;
-    background-color: #3B5249;
+    /* background-color: #3B5249; */
   }
 
   ul {
+    border: #ffffff;
+    border-style: solid;
+    border-width: 5px;
     /* background-color: #BEC5AD; */
     background-color: #3B5249
   }
@@ -78,4 +98,26 @@
     color: #282c34;
     color: #007279;
     color: #000;
+  }
+
+  .navBar {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    border-bottom: 1px solid #f2f2f2;
+  }
+
+  .navBar .links {
+    margin-left: auto;
+  }
+
+  .navBar a {
+    margin-left: 16px;
+    text-decoration: none;
+    padding: 6px;
+  }
+  .navBar a:hover {
+    color: #f1356d;
   }
