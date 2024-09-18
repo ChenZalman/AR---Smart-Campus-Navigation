@@ -14,8 +14,8 @@ export default function App() {
         <Route exact path="/" element={<Home/>}/>
         <Route exact path="/About" element={<About/>}/>
         <Route exact path="/LoginPage" element={<LoginPage/>}/>
-        {/* <Route exact path="/ForgotPassword" element={<ForgotPassword/>}/> */}
-        {/* <Route exact path="/RegisterPage" element={<RegisterPage/>}/> */}
+        {/* <Route exact path="/forgotPassword" element={<ForgotPassword/>}/> */}
+        {/* <Route exact path="/register" element={<Register/>}/> */}
         <Route path="*" element={<PageNotFound/>}/>
       </Routes>
       </BrowserRouter>

@@ -14,12 +14,12 @@ import { BsDisplay } from 'react-icons/bs';
     const handleSubmit = (e) =>{
         e.preventDefault();
         console.log(email);
-        fetch('ar-project-server',{
+        fetch('http://ar-project-server.database.windows.net',{
             method: `POST`,
             headers: {"Content-Type": "application/json"},
             body: {email,password}
         }
-        ).then(() =>{ 
+        ).catch((err) => {console.log(err.message)}).then(() =>{ 
         setEmail('');
         setpassword('');})
     }
