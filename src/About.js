@@ -1,7 +1,7 @@
 const About = () => {
     return ( 
         <div>
-            <h1 className="projectexpanation">
+            <h1 className="Title">
                 AR - Smart Campus Navigaion Project
             </h1>
             <h2>Creators:</h2>

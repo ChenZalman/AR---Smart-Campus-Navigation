@@ -1,12 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
 import LoginPage from './LoginPage';
 import About from './About';
 import Home from './Home';
 import { BrowserRouter, Routes,Route } from 'react-router-dom';
 import NavBar from './NavBar';
 import PageNotFound from './NotFoundPage';
-
+ import './index.css'
 export default function App() {
   return (
     <div className="App">

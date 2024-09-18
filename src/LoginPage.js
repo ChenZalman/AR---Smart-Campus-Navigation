@@ -1,13 +1,15 @@
-//import './App.css'
-import './Login.css'
+ import './index.css'
 import { useState } from 'react';
-import NavBar from './NavBar';
 import { Link } from 'react-router-dom';
+import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
+import { BsDisplay } from 'react-icons/bs';
 
  export default function LoginPage(){
     const [email, setEmail] = useState('');
     const [password, setpassword] = useState('');
-    const [passworddisplay, setpassworddisplay] = useState('');
+    const [error,setError] = useState(null);
+    const [visible,setVisible] = useState(false)
+    // const [passworddisplay, setpassworddisplay] = useState('');
     
     const handleSubmit = (e) =>{
         e.preventDefault();
@@ -27,15 +29,18 @@ import { Link } from 'react-router-dom';
             <h1 className='Title'>AR - SMART CAMPUS NAVIGATION</h1>
             <form className='LoginBox' onSubmit={handleSubmit}>
                 <p>Enter your cedentials:</p>
-                <div className= 'padding'></div>
-                    <div>
-                        Email: <input placeholder='exapmle@Domain' value={email} onChange={e => setEmail(e.target.value)} required/>
-                        <p>{email}</p>
+                {/* <div className= 'padding'></div> */}
+                    <div className='row'>
+                        <label>Email:</label> <input className='TextField' placeholder='exapmle@Domain' value={email} onChange={e => setEmail(e.target.value)} required/>
                     </div>
-                    <div>
-                        Password: <input placeholder='password' value={password} onChange={e => setpassword(e.target.value)} required/>
-                        <p>{password}</p>
+                    <div className='row'>
+                        <label>Password:</label> <input className='TextField' placeholder='password' value={password} onChange={e => setpassword(e.target.value)} required type={visible ? 'text': 'password'}/>
+                        <div className='eye' onClick={() => {setVisible(!visible)}}>   
+                            {visible ? <FaRegEye /> : <FaRegEyeSlash/>}
+                        </div>
                     </div>
+  
+                    
                     {/* <spacer className='padding'></spacer> */}
                 <Link to='./ForgotPasswordPage.js' className='forgotpassword'>forgot password?</Link>
                 <div className= 'padding'></div>
@@ -44,9 +49,9 @@ import { Link } from 'react-router-dom';
                 </div>
                 <div className= 'padding'></div>
                 <div>
-                    <Link to='./RegisterPage.js'>Don't have an account? Register</Link>
+                    <Link to='./register.js'>Don't have an account? Register</Link>
                 </div>
-                <Link to='./TeramofServicePage.js'>Terms of service</Link>
+                <Link to='./termsofServicePage.js'>Terms of service</Link>
             </form>
         </div>
     )
