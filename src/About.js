@@ -1,16 +1,20 @@
+import './index.css'
 const About = () => {
     return ( 
-        <div>
+        <div className="about">
             <h1 className="Title">
                 AR - Smart Campus Navigaion Project
             </h1>
-            <h2>Creators:</h2>
-        <p>Chen Zalman</p>
-        <p>Pavel Sagalov</p>
-        <p>Avi Digmi</p>
-        <p>Ofir Buchacho</p>
-    <h2>Instructor:</h2>
-        <p>Itamar Mizrahi</p>
+            <h2 className="h2">Creators:</h2>
+            <p>Buchacho Ofir</p>
+            <p>Digmi Avi</p>
+            <p>Sagalov Pavel</p>
+            <p>Zalman Chen</p>
+        
+        
+        
+    <h2 className="h2">Instructor:</h2>
+        <p>Mizrahi Itamar</p>
         </div>
      );
 }
