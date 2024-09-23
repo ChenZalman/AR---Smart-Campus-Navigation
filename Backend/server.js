@@ -1,6 +1,5 @@
 const express = require('express');
 const sql = require('mssql');  // Import the mssql library
-require('dotenv').config();  // Load environment variables
 const userRoutes = require('./routes/users');  // Import your user routes
 
 const app = express();
@@ -8,39 +7,52 @@ app.use(express.json());
 
 // Database configuration
 const config = {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    server: process.env.DB_SERVER,
-    database: process.env.DB_NAME,
+    user: process.env.DB_USER,        // Pulled directly from Azure configuration
+    password: process.env.DB_PASSWORD, // Pulled directly from Azure configuration
+    server: process.env.DB_SERVER,    // Pulled directly from Azure configuration
+    database: process.env.DB_NAME,    // Pulled directly from Azure configuration
     options: {
-        encrypt: true,  // For Azure SQL
+        encrypt: true,                // Required for Azure SQL
         enableArithAbort: true
     }
 };
 
-// Connect to the database and store the connection globally
-let dbConnection;
+// Global variable to store the database connection
+let dbConnection = null;
 
-sql.connect(config).then(pool => {
-    dbConnection = pool;
-    console.log('Connected to the database');
+// Function to establish and maintain the database connection
+async function connectToDatabase() {
+    try {
+        const pool = await sql.connect(config);
+        dbConnection = pool;
+        console.log('Connected to the Azure SQL database successfully');
+    } catch (error) {
+        console.error('Database connection failed:', error);
+        process.exit(1);  // Exit the application if database connection fails
+    }
+}
 
-    // Start the server after connection is established
-    const port = process.env.PORT || 3000;
-    app.listen(port, () => {
-        console.log(`Server is running on port ${port}`);
-    });
-}).catch(err => {
-    console.error('Database connection failed:', err);
-    process.exit(1);  // Exit if connection fails
-});
-
-// Use routes and pass the DB connection to them
+// Middleware to inject the database connection into each request
 app.use((req, res, next) => {
+    if (!dbConnection) {
+        return res.status(500).json({ error: 'Database connection not established' });
+    }
     req.db = dbConnection;  // Attach the connection pool to each request
     next();
 });
 
-app.use('/api/users', userRoutes);  // Load your user routes
+// Define your routes
+app.use('/api/users', userRoutes);
+
+// Start the server
+const port = process.env.PORT || 3000;  // Use Azure-provided PORT or fall back to 3000 for local dev
+
+app.listen(port, async () => {
+    console.log(`Server is starting on port ${port}`);
+    
+    // Ensure that the database connection is established before handling any requests
+    await connectToDatabase();
+    console.log(`Server is running on port ${port}`);
+});
 
 module.exports = app;
