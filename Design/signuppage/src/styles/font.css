@@ -1,0 +1,21 @@
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("/public/fonts/TitanOne.ttf");
+  font-family: "Titan One";
+  font-weight: 400;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("/public/fonts/RobotoMedium.ttf");
+  font-family: "Roboto";
+  font-weight: 500;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("/public/fonts/ManropeRegular.ttf");
+  font-family: "Manrope";
+  font-weight: 400;
+}
