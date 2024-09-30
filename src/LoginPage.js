@@ -14,12 +14,13 @@ import { BsDisplay } from 'react-icons/bs';
     const handleSubmit = (e) =>{
         e.preventDefault();
         console.log(email);
-        fetch('http://ar-server.database.windows.net',{ //'http://ar-project-server.database.windows.net'
+        fetch('http://artour-app.azurewebsites.net',{ //'http://ar-project-server.database.windows.net'   'http://ar-server.database.windows.net/'
             method: `POST`,
             headers: {"Content-Type": "application/json"},
             body: {email,password}
         }
-        ).catch((err) => {console.log(err.message)}).then(() =>{ 
+        ).catch((err) => {console.log(err.message)}).then((message) =>{ 
+        console.log(message);
         setEmail('');
         setpassword('');})
     }
