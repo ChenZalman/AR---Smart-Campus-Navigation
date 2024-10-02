@@ -8,6 +8,8 @@ export default function Footer({ ...props }) {
         const [visible,setVisible] = useState(false);
         const [name,setName] = useState('');
         const [username,setUsername] = useState('');
+        const [phoneNumber,setPhoneNumber] = useState('');
+
         const SumbitClick = (e) =>
         {
           e.preventDefault();
@@ -125,7 +127,7 @@ export default function Footer({ ...props }) {
               type="number"
               name="phone"
               placeholder={`PHONE NUMBER`} 
-              value={name} onChange={e => setName(e.target.value)}
+              value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)}
               suffix={<Img src="images/img_phone.svg" alt="envilope icon" className="h-[24px] w-[24px]"/>}
               className="flex h-[48px] w-full items-center justify-center gap-4 border-b border-solid border-blue_gray-700_56 px-2.5 text-[17px] tracking-[-0.43px] text-teal-700"
               required
