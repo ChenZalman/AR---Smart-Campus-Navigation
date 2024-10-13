@@ -10,17 +10,25 @@ export default function Footer({ ...props }) {
         const [username,setUsername] = useState('');
         const [phoneNumber,setPhoneNumber] = useState('');
 
-        const SumbitClick = (e) =>
-        {
+        const SubmitClick = async (e) =>{
           e.preventDefault();
-            fetch('http://ar-project-server.database.windows.net',{
+            const response = await fetch(`https://ar-tourapp-gac5fnceasb7ghh5.israelcentral-01.azurewebsites.net/api/users`,{//'http://ar-project-server.database.windows.net',{
                 method: `POST`,
                 headers: {"Content-Type": "application/json"},
-                body: {email,password}
-            }).catch((err) => {console.log(err.message)}).then(() =>{ 
-                setEmail('');
-                setpassword('')
-                ;})
+                body: JSON.stringify({"email":email, "password": password, "full_name":name, "phone_number":phoneNumber, "admin":1})
+            })
+
+            const json = await response.json()
+            if(!response.ok){
+              console.log(response)
+            }
+            if(response.ok){
+              setEmail('');
+              setpassword('');
+              setName('');
+              setPhoneNumber('');
+              console.log(json)
+            }
         }
 
   return (
@@ -28,7 +36,7 @@ export default function Footer({ ...props }) {
       {...props}
       className={`${props.className} flex flex-col mb-[46px] py-7 mx-[146px] md:mx-0 sm:py-5 bg-blue_gray-200 rounded-[40px]`}
     >
-      <form className="container-xs flex flex-col items-center px-14 md:px-5" onSubmit={(e) => SumbitClick}>
+      <form className="container-xs flex flex-col items-center px-14 md:px-5" onSubmit={(e) => SubmitClick(e)}>
         <Text
           size="texts"
           as="p"
@@ -55,15 +63,15 @@ export default function Footer({ ...props }) {
             />
           </div>
         </div>
-        <div className="mt-1.5 flex w-[48%] justify-center md:w-full">
-          <div className="flex w-full flex-wrap gap-4 border-b border-solid border-blue_gray-700_56 py-2.5">
+        {/* <div className="mt-1.5 flex w-[48%] justify-center md:w-full"> */}
+          {/* <div className="flex w-full flex-wrap gap-4 border-b border-solid border-blue_gray-700_56 py-2.5"> */}
             {/* <Text as="p" className="text-[17px] font-normal tracking-[-0.43px] text-teal-700">
               USERNAME
             </Text>
             <Text as="p" className="text-[17px] font-normal tracking-[-0.43px] text-gray-800_4c">
               israel1234
             </Text> */}
-            <Input
+            {/* <Input
               type="text"
               name="username"
               placeholder={`USSRNAME`} 
@@ -71,9 +79,9 @@ export default function Footer({ ...props }) {
               suffix={<Img src="images/img_person.svg" alt="envilope icon" className="h-[24px] w-[24px]"/>}
               className="flex h-[48px] w-full items-center justify-center gap-4 border-b border-solid border-blue_gray-700_56 px-2.5 text-[17px] tracking-[-0.43px] text-teal-700"
               required
-            />
-          </div>
-        </div>
+            /> */}
+          {/* </div> */}
+        {/* </div> */}
         <div className="mt-1.5 flex w-[48%] justify-center md:w-full">
           <div className="flex w-full items-center justify-between gap-5 border-b border-solid border-blue_gray-700_56 py-2 sm:flex-col">
           <Input
@@ -136,6 +144,7 @@ export default function Footer({ ...props }) {
         </div>
         <Button
           leftIcon={<Img src="images/img_lock.svg" alt="Lock" className="h-[18px] w-[18px]" />}
+          onClick ={(e) => SubmitClick(e)}
           className="mt-[30px] flex h-[40px] min-w-[100px] flex-row items-center justify-center gap-2 rounded-[20px] bg-teal-700 pl-1.5 pr-3.5 text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-blue_gray-200 shadow-xs"
         >
           SIGN UP
