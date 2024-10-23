@@ -1,26 +1,72 @@
 const sql = require('mssql');
 const User = require('../models/User');
+const jwt = require('jsonwebtoken')
+
+const createToken = (ID) =>{
+  return jwt.sign({_id: ID},process.env.SECRET,{})
+}
 
 // Create a new user
 const createUser = async (req, res) => {
     const { email, password, full_name, phone_number, admin } = req.body;
     try {
+        if(!email || !password || !full_name || !phone_number){
+            throw Error("All fields must be filled")
+        }
         // Insert the new user into the database
-        await req.db.request()
+        const result = await req.db.request()
             .input('email', sql.VarChar, email)
             .input('password', sql.VarChar, password)
             .input('full_name', sql.VarChar, full_name)
             .input('phone_number', sql.BigInt, phone_number)
             .input('admin', sql.Int, admin)
-            .query(`INSERT INTO users (email, password, full_name, phone_number, admin) 
+            .query(`INSERT INTO users (email, password, full_name, phone_number, admin)
+                    OUTPUT INSERTED.* 
                     VALUES (@email, @password, @full_name, @phone_number, @admin)`);
-        
+
+        //check if the user created
+        const userRecord = result.recordset[0];
+        if (!userRecord) {
+            return res.status(404).json({ message: `can't create the user, try again` });
+        }
+
         // Create a new User object
-        const newUser = new User(email, password, full_name, phone_number, admin);
-        res.status(201).json({ message: 'User created successfully!', user: newUser });
+        const newUser = new User(userRecord.email, userRecord.password, userRecord.full_name, userRecord.phone_number, userRecord.admin);
+        const token = createToken(userRecord.email)
+        res.status(201).json({ message: 'User created successfully!', user: newUser, token });
     } catch (err) {
         console.error('Error during POST /api/users:', err);
         res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+//  login, verify the user exists in the system
+const verifyUser = async (req, res) => {
+    const { email, password} = req.body;
+    try {
+        // Insert the new user into the database
+        if(!email || !password){
+            throw Error("All fields must be filled")
+        }
+        
+        const result = await await req.db.request()
+            .input('email', sql.VarChar, email)
+            .input('password', sql.VarChar, password)
+            .query(`SELECT * FROM users WHERE (users.email LIKE @email) AND (users.password LIKE @password)`);
+        
+        // select the matched user
+        const userRecord = result.recordset[0];
+        if (!userRecord) {
+            return res.status(404).json({ message: 'Bad credentials, try again' });
+        }
+        
+        // Create a User object
+        const user = new User(userRecord.email, userRecord.password, userRecord.full_name, userRecord.phone_number, userRecord.admin);
+        const token = createToken(userRecord.email) // Here we need the user unique ID so there is a token for him
+        res.status(200).json({user, token});
+    } catch (err) {
+        console.error('Error during login:', err);
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -114,6 +160,7 @@ const deleteUser = async (req, res) => {
 
 module.exports = {
     createUser,
+    verifyUser,
     getUserByEmail,
     getAllUsers,
     updateUser,
