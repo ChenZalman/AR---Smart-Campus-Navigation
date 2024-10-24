@@ -6,7 +6,7 @@ export default function AboutpageColumndescripti() {
   return (
     <div className="mx-[146px] mb-1 md:mx-0">
           <div className="w-full">
-            <div className="flex rounded-[40px] bg-blue_gray-200 py-[30px] sm:py-5">
+            <div className="flex bottom-0 left-0 right-0 top-0 m-auto h-[464px] w-[80%] rounded-[40px] bg-blue_gray-200 py-[30px] sm:py-5">
               <div className="container-xs flex flex-col align-center items-center px-14 md:px-5">
                   <span>
                       <Text

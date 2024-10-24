@@ -1,31 +1,33 @@
 import { Text, Button, Img, Input } from "../../components";
 import {React,useState} from "react";
 import { Link } from "react-router-dom";
-
+import { useLogin } from "Hooks/useLogin";
 
 export default function LoginpageRowenteryour() {
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
-  const [error,setError] = useState(null);
+  //const [error,setError] = useState(null);
   const [visible,setVisible] = useState(false)
+  const {login,isLoading,error} = useLogin()
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault();
-    console.log(email);
-    fetch('http://artour-app.azurewebsites.net',{ //'http://ar-project-server.database.windows.net'   'http://ar-server.database.windows.net/'
-        method: `POST`,
-        headers: {"Content-Type": "application/json"},
-        body: {email,password}
-    }
-    ).catch((err) => {console.log(err.message)}).then((message) =>{ 
-    console.log(message);
-    setEmail('');
-    setpassword('');})
+    await login(email,password)
+    // console.log(email);
+    //  const response = await fetch('http://artour-app.azurewebsites.net/login',{ 
+    //     method: `POST`,
+    //     headers: {"Content-Type": "application/json"},
+    //     body: JSON.stringify({"email" : email,"password" : password})
+    // }
+    // ).catch((err) => {console.log(err.message)}).then((message) =>{ 
+    // console.log(message);
+    // setEmail('');
+    // setpassword('');})
 }
 
   return (
     <div className="mb-1 flex justify-center px-14 md:px-5">
-      <div className="flex w-[86%] flex-col items-center justify-center rounded-[40px] bg-blue_gray-200 py-[42px] shadow-xs md:w-full md:py-5">
+      <div className="flex w-[80%] flex-col items-center justify-center rounded-[40px] bg-blue_gray-200 py-[42px] shadow-xs md:w-full md:py-5">
         <form className="container-xs flex flex-col items-center gap-[18px] px-14 md:px-5" onSubmit={handleSubmit}>
           <Text
             size="texts"
@@ -56,7 +58,7 @@ export default function LoginpageRowenteryour() {
               required
             />
           </div>
-          <Link to="/forgotpassword.js" className="text-[17px] font-normal tracking-[-0.43px] text-teal-700">
+          <Link to="/forgotpassword" className="text-[17px] font-normal tracking-[-0.43px] text-teal-700">
             Forgot your pass? Click here
           </Link>
           <Button
@@ -66,11 +68,11 @@ export default function LoginpageRowenteryour() {
             LOGIN
           </Button>
           <div className="flex flex-col items-center">
-            <Link to="/Register.js" className="flex text-[17px] font-normal tracking-[-0.43px] text-teal-700">
+            <Link to="/registrationpage" className="flex text-[17px] font-normal tracking-[-0.43px] text-teal-700">
               Don’t have an Account? SIGN UP NOW!
             </Link>
             <a href="#">
-              <Link to="/TermsofServies.js" className="text-[17px] font-normal tracking-[-0.43px] text-teal-700">
+              <Link to="/TermsofServies" className="text-[17px] font-normal tracking-[-0.43px] text-teal-700">
                 Terms of Service
               </Link>
             </a>
