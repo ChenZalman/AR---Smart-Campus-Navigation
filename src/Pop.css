@@ -1,0 +1,146 @@
+.image-container {
+    position: relative;
+    width: 1000px;
+    height: auto;
+}
+
+
+.background-image {
+    width: 100%;
+    height: auto;
+}
+
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.popup button {
+    background-color: #ff4b4b;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.2s;
+}
+
+.popup button:hover {
+    background-color: #e04343;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    animation: fadeInOverlay 0.3s ease-in-out;
+}
+
+@keyframes fadeInOverlay {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.button{
+    background-color: black;
+    color: white;
+    border: none;
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    outline-color: white;
+}
+
+.button:hover {
+    background-color: black;
+    transform: scale(1.05);
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+.buttonONE{
+    top: 9.3%;
+    left: 92.1%;
+    
+}
+
+.buttonTWO{
+    top: 8.2%;
+    left: 77.2%;
+}
+
+.buttonTHREE{
+    top: 7.4%;
+    left: 67.7%;
+}
+
+.buttonFOUR{
+    top: 29%;
+    left: 65.9%;
+}
+
+.buttonFIVE{
+    top: 23%;
+    left: 41.8%;
+}
+
+.buttonSIX{
+    top: 44.3%;
+    left: 40.5%;
+}
+
+.buttonSEVEN{
+    top: 69.3%;
+    left: 31.5%;
+}
+
+.buttonEIGHT{
+    top: 16.4%;
+    left: 22.7%;
+}

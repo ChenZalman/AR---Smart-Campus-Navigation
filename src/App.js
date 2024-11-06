@@ -1,14 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
 import Register from './Register';
+import Pop from './Pop';
 
 function App() {
   return (
     <div className="App">
-      <h1>
-        hello!
+    <main> 
         <Register />
-      </h1>
+
+         
+        <Pop />
+    </main>
     </div>
   );
 }

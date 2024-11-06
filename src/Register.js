@@ -1,8 +1,8 @@
-import { useState } from "react";
+//import { useState } from "react";
 
 const Register = () =>
     {
-        const [email, setEmail] = useState('');
+        /*const [email, setEmail] = useState('');
         const [password, setpassword]  = useState('');
 
         const SumbitClick = () =>
@@ -73,7 +73,7 @@ const Register = () =>
                 
 
             </div>
-        );
+        );*/
     }
     
 export default Register;
