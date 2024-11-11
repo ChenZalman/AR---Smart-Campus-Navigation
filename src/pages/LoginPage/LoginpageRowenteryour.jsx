@@ -25,6 +25,10 @@ export default function LoginpageRowenteryour() {
     // setpassword('');})
 }
 
+const navigate = () => {
+  
+}
+
   return (
     <div className="mb-1 flex justify-center px-14 md:px-5">
       <div className="flex w-[80%] flex-col items-center justify-center rounded-[40px] bg-blue_gray-200 py-[42px] shadow-xs md:w-full md:py-5">
@@ -58,9 +62,11 @@ export default function LoginpageRowenteryour() {
               required
             />
           </div>
+          
           <Link to="/forgotpassword" className="text-[17px] font-normal tracking-[-0.43px] text-teal-700">
             Forgot your pass? Click here
           </Link>
+          
           <Button
             leftIcon={<Img src="images/img_lock.svg" alt="Lock" className="h-[18px] w-[18px]" />}
             className="flex h-[40px] min-w-[100px] flex-row items-center justify-center gap-2 rounded-[20px] bg-teal-700 pl-3 pr-5 text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-blue_gray-200 shadow-xs"
@@ -68,14 +74,19 @@ export default function LoginpageRowenteryour() {
             LOGIN
           </Button>
           <div className="flex flex-col items-center">
+          
             <Link to="/registrationpage" className="flex text-[17px] font-normal tracking-[-0.43px] text-teal-700">
               Don’t have an Account? SIGN UP NOW!
             </Link>
-            <a href="#">
-              <Link to="/TermsofServies" className="text-[17px] font-normal tracking-[-0.43px] text-teal-700">
+            
+            {/* This Tag caused a warning to appear and it does nothing so it is commented until further notice */}
+            {/* <a href="#"> */} 
+            
+              <Link to="/termsofServies" className="flex text-[17px] font-normal tracking-[-0.43px] text-teal-700">
                 Terms of Service
               </Link>
-            </a>
+              
+            {/* </a> */}
           </div>
         </form>
       </div>
