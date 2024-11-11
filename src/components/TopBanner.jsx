@@ -2,9 +2,14 @@ import { Button, Text, Img } from "../components";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from '../Hooks/useAuthContext';
+import { useLogout } from "../Hooks/useLogout";
 
 export default function TopBanner() {
   const {user} = useAuthContext();
+  const {logout} = useLogout()
+  const handleClick = () =>{
+    logout()
+  }
   return (
     <div>
       <div className="flex h-[430px] flex-col gap-20 rounded-bl-[30px] rounded-br-[30px] bg-[url(/public/images/img_topviewpage.png)] bg-cover bg-no-repeat md:h-auto md:gap-[60px] sm:gap-10">
@@ -66,6 +71,13 @@ export default function TopBanner() {
               <Link to="/aboutpage" className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
                 ABOUT
               </Link>
+
+              {user &&
+              <Button onClick= {handleClick} className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
+                LOGOUT
+              </Button>
+            }
+
             </div>
           </div>
         </div>
