@@ -11,7 +11,7 @@ export const useSignup = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch(`http://${address}:4000/API/USERS/signup`,////'http://176.230.225.70:4000/API/USERS/signup',//'https://ar-tourapp-gac5fnceasb7ghh5.israelcentral-01.azurewebsites.net/api/users/signup',
+        const response = await fetch(`http://${address}:4000/API/USERS/signup`,//'https://ar-tourapp-gac5fnceasb7ghh5.israelcentral-01.azurewebsites.net/api/users/signup',
             {method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({"email":email, "password": password, "full_name":name, "phone_number":phoneNumber, "admin":1})})

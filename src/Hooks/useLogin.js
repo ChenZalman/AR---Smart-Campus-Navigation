@@ -11,7 +11,7 @@ export const useLogin = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch(`http://${address}:4000/API/USERS/login`,//'http://176.230.225.70:4000/API/USERS/login',//'http://artour-app.azurewebsites.net/login',
+        const response = await fetch(`http://${address}:4000/API/USERS/login`,//'http://artour-app.azurewebsites.net/login',
             { 
             method: `POST`,
             headers: {"Content-Type": "application/json"},
