@@ -7,16 +7,18 @@ import AboutPagePage from "pages/AboutPage";
 import AfterSignedUpPagePage from "pages/AfterSignedUpPage";
 import SignUpPagePage from "pages/SignUpPage";
 import { useAuthContext } from './Hooks/useAuthContext';
+import Pop from "pages/Pop";
 
 const ProjectRoutes = () => {
   const {user} = useAuthContext();
   let element = useRoutes([
     { path: "/", element: <Home />  },
     { path: "*", element: <NotFound /> },
-    { path: "/loginpage", element:<>  {!user ? <LoginPage /> : <Navigate to="/"/>}</>},  //In this line element gets a component that return a page to get a user info if a user isn't signed
+    { path: "/loginpage", element:<>  {!user ? <LoginPage /> : <Navigate to="/Pop"/>}</>},  //In this line element gets a component that return a page to get a user info if a user isn't signed
     { path: "/aboutpage", element: <AboutPagePage />},
     { path: "/afterregistrationpage", element: <AfterSignedUpPagePage />},
-    { path: "/registrationpage", element:<>  {!user ?  <SignUpPagePage />  : <Navigate to="/"/>}</>}  //In this line element gets a component that return a page to get a user info if a user isn't signed
+    { path: "/registrationpage", element:<>  {!user ?  <SignUpPagePage />  : <Navigate to="/Pop"/>}</>},  //In this line element gets a component that return a page to get a user info if a user isn't signed
+    { path: "/Pop", element:<>  {user ?  <Pop />  : <Navigate to="/loginpage"/>}</>}
   ]);
 
   return element;
