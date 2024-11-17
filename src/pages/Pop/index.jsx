@@ -21,7 +21,7 @@ export default function PopPage() {
       </Helmet>
       {/* <div className="flex w-full flex-col gap-20 bg-white-a700 md:gap-[60px] sm:gap-10"> */}
 
-      {!display && <button onClick={displayMap}>Press to start</button>}
+      {!display && <button className = "showMapButton" onClick={displayMap}>Press to start</button>}
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
         {display && <Pop/>}

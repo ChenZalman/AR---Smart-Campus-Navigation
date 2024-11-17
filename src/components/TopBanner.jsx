@@ -74,7 +74,7 @@ export default function TopBanner() {
 
               {user &&
               <Link to="/Pop" className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
-                Map
+                MAP
               </Link>
               }
 

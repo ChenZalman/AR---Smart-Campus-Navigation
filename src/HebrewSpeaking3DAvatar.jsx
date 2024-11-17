@@ -117,8 +117,8 @@ const EnhancedHebrewSpeakingAvatar = () => {
           <Lights />
           <Model />
         </Canvas>
-        <button onClick={func1}>Press 1</button>
-        <button onClick={func2}>Press 2</button>
+        {/* <button onClick={func1}>Press 1</button>
+        <button onClick={func2}>Press 2</button> */}
       </div>
     </div>
   );
