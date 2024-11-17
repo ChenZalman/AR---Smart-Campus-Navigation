@@ -6,12 +6,15 @@ import "./styles/index.css";
 import "./styles/font.css";
 
 import { AuthContextProvider } from './context/AuthContext';
+import { BuildingContextProvider } from "./Context/BuildingContext";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
     <AuthContextProvider>
-        <App />
+        <BuildingContextProvider>
+            <App />
+        </BuildingContextProvider>
     </AuthContextProvider>
 );

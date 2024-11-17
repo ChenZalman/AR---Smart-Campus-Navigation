@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { useGLTF, useAnimations } from '@react-three/drei';
 import * as THREE from 'three';
+import { useBuildingContext } from 'Hooks/useBuildingContext';
 
 const Model = () => {
   const group = useRef();
@@ -45,8 +46,13 @@ const EnhancedHebrewSpeakingAvatar = () => {
   const [hebrewVoices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
   const [test, setTest] = useState(0);
-  const paragraph =
-    'מעונות הסטודנטים ממוקמים בלב העיר חולון בקמפוס HIT מכון טכנולוגי חולון ומעניקים סביבת מגורים נעימה, נוחה וקרובה ללימודים.';
+  const {buildingInfo} = useBuildingContext()
+  const [paragraph,setParagraph] = useState(buildingInfo)
+
+    //const paragraph = 'מעונות הסטודנטים ממוקמים בלב העיר חולון בקמפוס HIT מכון טכנולוגי חולון ומעניקים סביבת מגורים נעימה, נוחה וקרובה ללימודים.';
+  useEffect(() =>{
+      setParagraph(buildingInfo)
+   },[buildingInfo])
 
   function func1() {
     setTest(1); // trigger the effect
@@ -82,21 +88,21 @@ const EnhancedHebrewSpeakingAvatar = () => {
       utterance.pitch = 1;
       window.speechSynthesis.speak(utterance);
     }
-  }, [selectedVoice]); // Trigger speech when voice is selected
+  }, [paragraph,selectedVoice]); // Trigger speech when voice is selected
 
   // When `test` changes (from button press), you can force a voice reload
-  useEffect(() => {
-    if (test === 1 || test === 2) {
-      // Check if voice is set, if not, set it manually or force speech
-      if (selectedVoice) {
-        const utterance = new SpeechSynthesisUtterance(paragraph);
-        utterance.voice = selectedVoice;
-        utterance.rate = 0.8;
-        utterance.pitch = 1;
-        window.speechSynthesis.speak(utterance);
-      }
-    }
-  }, [test, selectedVoice]); // re-run if test state changes
+  // useEffect(() => {
+  //   if (test === 1 || test === 2) {
+  //     // Check if voice is set, if not, set it manually or force speech
+  //     if (selectedVoice) {
+  //       const utterance = new SpeechSynthesisUtterance(paragraph);
+  //       utterance.voice = selectedVoice;
+  //       utterance.rate = 0.8;
+  //       utterance.pitch = 1;
+  //       window.speechSynthesis.speak(utterance);
+  //     }
+  //   }
+  // }, [test, selectedVoice]); // re-run if test state changes
 
   return (
     <div
