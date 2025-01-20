@@ -8,6 +8,7 @@ import AfterSignedUpPagePage from "pages/AfterSignedUpPage";
 import SignUpPagePage from "pages/SignUpPage";
 import { useAuthContext } from './Hooks/useAuthContext';
 import Pop from "pages/Pop";
+import BuildingList from "pages/Buildings/BuildingsList";
 
 const ProjectRoutes = () => {
   const {user} = useAuthContext();
@@ -18,7 +19,8 @@ const ProjectRoutes = () => {
     { path: "/aboutpage", element: <AboutPagePage />},
     { path: "/afterregistrationpage", element: <AfterSignedUpPagePage />},
     { path: "/registrationpage", element:<>  {!user ?  <SignUpPagePage />  : <Navigate to="/Pop"/>}</>},  //In this line element gets a component that return a page to get a user info if a user isn't signed
-    { path: "/Pop", element:<>  {user ?  <Pop />  : <Navigate to="/loginpage"/>}</>}
+    { path: "/Pop", element:<>  {user ?  <Pop />  : <Navigate to="/loginpage"/>}</>},
+    { path: "/Buildings", element:<>  {user ?  <BuildingList />  : <Navigate to="/loginpage"/>}</>}
   ]);
 
   return element;

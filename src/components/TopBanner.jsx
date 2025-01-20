@@ -1,15 +1,22 @@
-import { Button, Text, Img } from "../components";
-import React from "react";
-import { Link } from "react-router-dom";
-import { useAuthContext } from '../Hooks/useAuthContext';
-import { useLogout } from "../Hooks/useLogout";
+import { Button, Text, Img } from "../components"
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
+import { useAuthContext } from "../Hooks/useAuthContext"
+import { useLogout } from "../Hooks/useLogout"
 
 export default function TopBanner() {
-  const {user} = useAuthContext();
-  const {logout} = useLogout()
-  const handleClick = () =>{
+  const { user } = useAuthContext()
+  const { logout } = useLogout()
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+  const handleClick = () => {
     logout()
   }
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen)
+  }
+
   return (
     <div>
       <div className="flex h-[430px] flex-col gap-20 rounded-bl-[30px] rounded-br-[30px] bg-[url(/public/images/img_topviewpage.png)] bg-cover bg-no-repeat md:h-auto md:gap-[60px] sm:gap-10">
@@ -55,40 +62,77 @@ export default function TopBanner() {
         <div>
           <div className="rounded-[30px] bg-teal-700 p-3">
             <div className="flex gap-9 self-end md:flex-col">
-              <Link to="/" className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
+              <Link
+                to="/"
+                className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5"
+              >
                 HOME
               </Link>
-              {!user &&
-              <Link to="/loginpage" className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
-                LOGIN
-              </Link>
-            }
-            {!user &&
-              <Link to="/registrationpage" className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
-                SIGN UP
-              </Link>
-            }
-              <Link to="/aboutpage" className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
+              {!user && (
+                <>
+                  <Link
+                    to="/loginpage"
+                    className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5"
+                  >
+                    LOGIN
+                  </Link>
+                  <Link
+                    to="/registrationpage"
+                    className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5"
+                  >
+                    SIGN UP
+                  </Link>
+                </>
+              )}
+              <Link
+                to="/aboutpage"
+                className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5"
+              >
                 ABOUT
               </Link>
 
-              {user &&
-              <Link to="/Pop" className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
-                MAP
-              </Link>
-              }
+              {user && (
+                <div className="relative">
+                  <button
+                    onClick={toggleDropdown}
+                    className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5"
+                  >
+                    MAP
+                  </button>
+                  {isDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg">
+                      <Link
+                        to="/Pop"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={toggleDropdown}
+                      >
+                        View Map
+                      </Link>
+                      <Link
+                        to="/Buildings"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={toggleDropdown}
+                      >
+                        Search Location
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              )}
 
-              {user &&
-              <Button onClick= {handleClick} className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
-                LOGOUT
-              </Button>
-            }
-
-
+              {user && (
+                <Button
+                  onClick={handleClick}
+                  className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5"
+                >
+                  LOGOUT
+                </Button>
+              )}
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
+
