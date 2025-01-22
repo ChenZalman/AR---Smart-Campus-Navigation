@@ -8,7 +8,7 @@ import AfterSignedUpPagePage from "pages/AfterSignedUpPage";
 import SignUpPagePage from "pages/SignUpPage";
 import { useAuthContext } from './Hooks/useAuthContext';
 import Pop from "pages/Pop";
-import BuildingList from "pages/Buildings/BuildingsList";
+import BuildingList from "pages/Buildings/BuildingList";
 
 const ProjectRoutes = () => {
   const {user} = useAuthContext();
