@@ -46,7 +46,7 @@ const EnhancedHebrewSpeakingAvatar = () => {
   const [hebrewVoices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
   const [test, setTest] = useState(0);
-  const {buildingInfo} = useBuildingContext()
+  const {dispatch,buildingInfo} = useBuildingContext()
   const [paragraph,setParagraph] = useState(buildingInfo)
 
     //const paragraph = 'מעונות הסטודנטים ממוקמים בלב העיר חולון בקמפוס HIT מכון טכנולוגי חולון ומעניקים סביבת מגורים נעימה, נוחה וקרובה ללימודים.';
@@ -54,13 +54,13 @@ const EnhancedHebrewSpeakingAvatar = () => {
       setParagraph(buildingInfo)
    },[buildingInfo])
 
-  function func1() {
-    setTest(1); // trigger the effect
-  }
+  // function func1() {
+  //   setTest(1); // trigger the effect
+  // }
 
-  function func2() {
-    setTest(2); // trigger the effect
-  }
+  // function func2() {
+  //   setTest(2); // trigger the effect
+  // }
 
   // Load voices only once, and if voices change, update them.
   useEffect(() => {
@@ -87,6 +87,10 @@ const EnhancedHebrewSpeakingAvatar = () => {
       utterance.rate = 0.8;
       utterance.pitch = 1;
       window.speechSynthesis.speak(utterance);
+      if(paragraph != "")
+      {
+        dispatch({type: 0, payload:{discription: ""}})
+      }
     }
   }, [paragraph,selectedVoice]); // Trigger speech when voice is selected
 
