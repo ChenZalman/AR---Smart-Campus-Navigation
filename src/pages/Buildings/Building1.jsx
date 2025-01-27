@@ -9,21 +9,21 @@ function Building1() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if(window.scrollY > 430 && window.scrollY < 1300)
-        setPosition(window.scrollY); // Adjust based on scroll
-      // if(window.scrollY < 20000)
-      //   setPosition(430);
+      if(window.scrollY > 430 && window.scrollY < 1340)
+        setPosition(window.scrollY + 30); // Adjust based on scroll
+      else if(window.scrollY >= 1340)
+        setPosition(1040);
       else
         setPosition(430);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [window.scrollY]);
 
   return (
      <div className="flex">
-        <div style={{position: "absolute",top: `${position}px`,right: "10px",transition: "top 0.2s ease-out",}}>
+        <div style={{position: "absolute",top: `${position}px`,right: "100px",}}>
           <HebrewSpeaking3DAvatar/>
         </div>
 

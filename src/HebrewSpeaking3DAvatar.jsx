@@ -54,14 +54,6 @@ const EnhancedHebrewSpeakingAvatar = () => {
       setParagraph(buildingInfo)
    },[buildingInfo])
 
-  // function func1() {
-  //   setTest(1); // trigger the effect
-  // }
-
-  // function func2() {
-  //   setTest(2); // trigger the effect
-  // }
-
   // Load voices only once, and if voices change, update them.
   useEffect(() => {
     const loadVoices = () => {
@@ -94,20 +86,6 @@ const EnhancedHebrewSpeakingAvatar = () => {
     }
   }, [paragraph,selectedVoice]); // Trigger speech when voice is selected
 
-  // When `test` changes (from button press), you can force a voice reload
-  // useEffect(() => {
-  //   if (test === 1 || test === 2) {
-  //     // Check if voice is set, if not, set it manually or force speech
-  //     if (selectedVoice) {
-  //       const utterance = new SpeechSynthesisUtterance(paragraph);
-  //       utterance.voice = selectedVoice;
-  //       utterance.rate = 0.8;
-  //       utterance.pitch = 1;
-  //       window.speechSynthesis.speak(utterance);
-  //     }
-  //   }
-  // }, [test, selectedVoice]); // re-run if test state changes
-
   return (
     <div
       style={{
@@ -128,8 +106,6 @@ const EnhancedHebrewSpeakingAvatar = () => {
           <Lights />
           <Model />
         </Canvas>
-        {/* <button onClick={func1}>Press 1</button>
-        <button onClick={func2}>Press 2</button> */}
       </div>
     </div>
   );
