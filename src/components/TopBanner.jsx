@@ -1,34 +1,28 @@
 import { Button, Text, Img } from "../components";
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuthContext } from '../Hooks/useAuthContext';
+import { useAuthContext } from "../Hooks/useAuthContext";
 import { useLogout } from "../Hooks/useLogout";
+import "../styles/style.css";
 
 export default function TopBanner() {
-  const {user} = useAuthContext();
-  const {logout} = useLogout()
-  const handleClick = () =>{
-    logout()
-  }
+  const { user } = useAuthContext();
+  const { logout } = useLogout();
+  const handleClick = () => {
+    logout();
+  };
+
   return (
     <div>
-      <div className="flex h-[430px] flex-col gap-20 rounded-bl-[30px] rounded-br-[30px] bg-[url(/public/images/img_topviewpage.png)] bg-cover bg-no-repeat md:h-auto md:gap-[60px] sm:gap-10">
+      <div className="flex h-[380px] flex-col gap-20 rounded-bl-[10px] rounded-br-[10px] bg-[url(/images/img_topviewpage.png)] bg-cover bg-no-repeat md:h-auto md:gap-[60px] sm:gap-10">
         <div className="mx-[34px] md:mx-0">
-          <div className="flex flex-col items-center gap-[88px] md:gap-[66px] sm:gap-11">
-            <div className="flex items-center justify-between gap-5 self-stretch">
-              <div className="flex w-[6%] justify-center gap-2.5 self-end rounded-[14px] bg-teal-700 p-2.5 shadow-xs">
-                <div className="w-full rounded-[12px] bg-blue_gray-200 shadow-sm">
-                  <div className="flex flex-col items-center rounded-[12px]">
-                    <Img src="images/img_icon.svg" alt="Icon" className="h-[24px] w-[24px]" />
-                  </div>
-                </div>
-                <div className="w-full rounded-[12px] bg-blue_gray-200 shadow-sm">
-                  <div className="flex flex-col items-center rounded-[12px]">
-                    <Img src="images/img_search.svg" alt="Search" className="h-[24px] w-[24px]" />
-                  </div>
-                </div>
-              </div>
-              <Img src="images/img_whitelogohit.png" alt="Whitelogohit" className="h-[54px] w-[14%] object-contain" />
+          <div className="flex flex-col items-center gap-[88px] md:gap-[66px] sm:gap-11 mt-[-20px]">
+            <div className="flex items-center justify-end gap-5 self-stretch mt-10">
+              <Img
+                src="images/img_whitelogohit.png"
+                alt="Whitelogohit"
+                className="h-[54px] w-[14%] object-contain"
+              />
             </div>
             <div className="container-xs md:px-5">
               <div>
@@ -36,56 +30,76 @@ export default function TopBanner() {
                   <Text
                     size="textmd"
                     as="p"
-                    className="font-titanone text-[64px] font-normal text-teal-700 md:text-[48px]"
+                    className="font-titanone text-[64px] font-normal md:text-[48px] text-royalblue-100 drop-shadow-lg"
+                    style={{
+                      WebkitTextStroke: "1px black",
+                      transform: "translateY(-30px)", // Moves the title up
+                    }}
                   >
-                    AR - SMART CAMPUS NAVIGATION
+                    AR - Smart Campus Navigation
                   </Text>
                   <Text
                     size="textlg"
                     as="p"
-                    className="relative mt-[-82px] font-titanone text-[65px] font-normal text-white-a700 md:text-[48px]"
+                    className="relative mt-[-82px] font-titanone text-[64px] font-normal text-[rgb(228,228,228)] md:text-[48px] drop-shadow-[0_4px_6px_rgba(0,0,0,0.4)]"
+                    style={{
+                      WebkitTextStroke: "2px black",
+                      transform: "translateY(-30px)", // Moves the subtitle up
+                    }}
                   >
-                    AR - SMART CAMPUS NAVIGATION
+                    AR - Smart Campus Navigation
                   </Text>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div>
-          <div className="rounded-[30px] bg-teal-700 p-3">
-            <div className="flex gap-9 self-end md:flex-col">
-              <Link to="/" className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
-                HOME
+        <div className="rounded-[10px] p-6 shadow-lg mt-[-40px]">
+          <div className="flex flex-wrap items-center justify-center gap-20 md:flex-col">
+            <Link
+              to="/"
+              className="flex items-center justify-center h-14 min-w-[140px] border-2 border-royalblue-300 rounded-[34px] bg-royalblue-100 px-6 py-3 text-center font-roboto text-[16px] font-medium tracking-wide text-royalblue-700 shadow-lg hover:bg-royalblue-200 hover:brightness-110 transition-all duration-300"
+            >
+              Home
+            </Link>
+            {!user && (
+              <Link
+                to="/loginpage"
+                className="flex items-center justify-center h-14 min-w-[140px] border-2 border-royalblue-300 rounded-[34px] bg-royalblue-100 px-6 py-3 text-center font-roboto text-[16px] font-medium tracking-wide text-royalblue-700 shadow-lg hover:bg-royalblue-200 hover:brightness-110 transition-all duration-300"
+              >
+                Login
               </Link>
-              {!user &&
-              <Link to="/loginpage" className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
-                LOGIN
+            )}
+            {!user && (
+              <Link
+                to="/registrationpage"
+                className="flex items-center justify-center h-14 min-w-[140px] border-2 border-royalblue-300 rounded-[34px] bg-royalblue-100 px-6 py-3 text-center font-roboto text-[16px] font-medium tracking-wide text-royalblue-700 shadow-lg hover:bg-royalblue-200 hover:brightness-110 transition-all duration-300"
+              >
+                Sign Up
               </Link>
-            }
-            {!user &&
-              <Link to="/registrationpage" className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
-                SIGN UP
+            )}
+            <Link
+              to="/aboutpage"
+              className="flex items-center justify-center h-14 min-w-[140px] border-2 border-royalblue-300 rounded-[34px] bg-royalblue-100 px-6 py-3 text-center font-roboto text-[16px] font-medium tracking-wide text-royalblue-700 shadow-lg hover:bg-royalblue-200 hover:brightness-110 transition-all duration-300"
+            >
+              About
+            </Link>
+            {user && (
+              <Link
+                to="/Pop"
+                className="flex items-center justify-center h-14 min-w-[140px] border-2 border-royalblue-300 rounded-[34px] bg-royalblue-100 px-6 py-3 text-center font-roboto text-[16px] font-medium tracking-wide text-royalblue-700 shadow-lg hover:bg-royalblue-200 hover:brightness-110 transition-all duration-300"
+              >
+                Map
               </Link>
-            }
-              <Link to="/aboutpage" className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
-                ABOUT
-              </Link>
-
-              {user &&
-              <Link to="/Pop" className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
-                MAP
-              </Link>
-              }
-
-              {user &&
-              <Button onClick= {handleClick} className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5">
-                LOGOUT
+            )}
+            {user && (
+              <Button
+                onClick={handleClick}
+                className="flex items-center justify-center h-14 min-w-[140px] border-2 border-royalblue-300 rounded-[34px] bg-royalblue-100 px-6 py-3 text-center font-roboto text-[16px] font-medium tracking-wide text-royalblue-700 shadow-lg hover:bg-royalblue-200 hover:brightness-110 transition-all duration-300"
+              >
+                Logout
               </Button>
-            }
-
-
-            </div>
+            )}
           </div>
         </div>
       </div>

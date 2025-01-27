@@ -31,13 +31,13 @@ export default function AftersigneduppageTopviewpage() {
                     as="p"
                     className="font-titanone text-[64px] font-normal text-teal-700 md:text-[48px]"
                   >
-                    AR - SMART CAMPUS NAVIGATION
+                    AR - Smart Campus Navigation
                   </Text>
                   <Text
                     as="p"
                     className="relative mt-[-82px] font-titanone text-[65px] font-normal text-white-a700 md:text-[48px]"
                   >
-                    AR - SMART CAMPUS NAVIGATION
+                    AR - Smart Campus Navigation
                   </Text>
                 </div>
               </div>

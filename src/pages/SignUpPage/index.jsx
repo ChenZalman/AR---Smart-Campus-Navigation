@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet";
-import Footer from "../../components/Footer";
-import SignuppageTopviewpage from "./SignuppageTopviewpage";
+import SignUpPageView from "./SignUpPageView";
 import React from "react";
 
 export default function SignUpPagePage() {
@@ -12,7 +11,7 @@ export default function SignUpPagePage() {
       </Helmet>
       <div className="flex w-full flex-col gap-[46px] bg-white-a700">
         {/* <SignuppageTopviewpage /> */}
-        <Footer />
+        <SignUpPageView />
       </div>
     </>
   );

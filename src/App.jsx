@@ -5,7 +5,7 @@ import TopBanner from "components/TopBanner";
 
 function App() {
   return (
-    <div className="flex w-full flex-col gap-20 bg-white-a700 md:gap-[60px] sm:gap-10">
+    <div className="flex w-full flex-col gap-20 bg-bubble_gray-light md:gap-[60px] sm:gap-10">
     <Router>
       <TopBanner/>
       <Routes />

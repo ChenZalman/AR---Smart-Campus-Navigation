@@ -10,7 +10,16 @@ module.exports = {
         blue_gray: { 200: "var(--blue_gray_200)", "700_56": "var(--blue_gray_700_56)" },
         gray: { "800_4c": "var(--gray_800_4c)" },
         teal: { 700: "var(--teal_700)" },
-        white: { a700: "var(--white_a700)" },
+        royalblue: {
+          100: "#B0C6E5", 
+          300: "#6082B6", 
+          700: "#2D4A78",
+        },
+        bubble_gray: { 
+          DEFAULT: "#B4C5E2", 
+          light: "#D7D8D9"  
+        },
+
       },
       boxShadow: { xs: "0 4px 4px 0 #0000003f", sm: "0 1px 3px 0 #0000004c" },
       fontFamily: { manrope: "Manrope", roboto: "Roboto", titanone: "Titan One" },

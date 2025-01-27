@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet";
-import AboutpageColumndescripti from "./AboutpageColumndescripti";
-import AboutpageTopviewpage from "./AboutpageTopviewpage";
+import AboutPageView from "./AboutPageView";
 import React from "react";
 import { Tabs } from "react-tabs";
 
@@ -16,8 +15,7 @@ export default function AboutPagePage() {
         selectedTabClassName=""
         selectedTabPanelClassName="tab-panel--selected"
       >
-        {/* <AboutpageTopviewpage /> */}
-        <AboutpageColumndescripti />
+        <AboutPageView />
       </Tabs>
     </>
   );

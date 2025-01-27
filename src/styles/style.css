@@ -1,0 +1,11 @@
+
+.Navbar {
+    backdrop-filter: blur(10px); /* Smaller blur for subtle transparency */
+    background-color: rgba(255, 255, 255, 0.3); /* Add a semi-transparent background for better visibility */
+    box-shadow: 0px 0px 15px rgba(227, 228, 237, 0.3); /* Softer and less pronounced shadow */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Lighter border with frosted effect */
+    width: 60%;
+    margin: auto;
+    border-radius: 12px; /* Optional: rounded corners for a modern look */
+}
+

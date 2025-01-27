@@ -10,8 +10,15 @@ const sizes = {
 const Text = ({ children, className = "", as, size = "textxs", ...restProps }) => {
   const Component = as || "p";
 
+  const textColorClass = className.includes("text-")
+    ? ""
+    : "text-royalblue-700"; // Only apply default color if no custom color is specified
+
   return (
-    <Component className={`text-teal-700 font-manrope ${className} ${sizes[size]}`} {...restProps}>
+    <Component
+      className={`${sizes[size]} font-manrope ${textColorClass} ${className}`}
+      {...restProps}
+    >
       {children}
     </Component>
   );
