@@ -23,8 +23,8 @@ const Model = () => {
     <group
       ref={group}
       rotation={[0, THREE.MathUtils.degToRad(25), 0]}
-      position={[0.2, -1, 0]}
-      scale={[1.2, 1.2, 1.2]}
+      position={[-0.15, -0.5, 0.5]}
+      scale={[1, 1, 1]}
     >
       <primitive object={scene} />
     </group>
@@ -114,10 +114,11 @@ const EnhancedHebrewSpeakingAvatar = () => {
         display: 'flex-inline',
         justifyContent: 'flex-end',
         alignItems: 'center',
-        height: '100vh',
+        // height: '100vh',
+        height: '630px',
         background: '#f0f0f0',
         paddingRight: '50px',
-        width: '400px',
+        width: '300px',
         marginRight: '0',
         marginLeft: 'auto'
       }}
