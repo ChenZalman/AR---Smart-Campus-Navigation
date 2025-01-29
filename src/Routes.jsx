@@ -18,7 +18,7 @@ const ProjectRoutes = () => {
     { path: "/aboutpage", element: <AboutPagePage />},
     { path: "/afterregistrationpage", element: <AfterSignedUpPagePage />},
     { path: "/registrationpage", element:<>  {!user ?  <SignUpPagePage />  : <Navigate to="/Pop"/>}</>},  //In this line element gets a component that return a page to get a user info if a user isn't signed
-    { path: "/Pop", element:<>  {!user ?  <Pop />  : <Navigate to="/loginpage"/>}</>}
+    { path: "/Pop", element:<>  {user ?  <Pop />  : <Navigate to="/loginpage"/>}</>}
   ]);
 
   return element;
