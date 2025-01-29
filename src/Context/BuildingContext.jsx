@@ -33,9 +33,9 @@ export const BuildingReducer = (state, action) => {
       building: null
     })
 
-    useEffect(() => {
-          dispatch({type: 0, payload:{discription: "ברוכים הבאים למכון טכנולוגי חולון. לחצו על הכפתור שמעליי בכדי להציג את המפה ולהתחיל את הסיור הוירטואלי"}})
-      }, [])
+    // useEffect(() => {
+    //       dispatch({type: 0, payload:{discription: "ברוכים הבאים למכון טכנולוגי חולון. לחצו על הכפתור שמעליי בכדי להציג את המפה ולהתחיל את הסיור הוירטואלי"}})
+    //   }, [])
       
     console.log('BuildingContext state:', state)
     

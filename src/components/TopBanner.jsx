@@ -1,16 +1,21 @@
-import { Button, Text, Img } from "../components";
-import React from "react";
-import { Link } from "react-router-dom";
-import { useAuthContext } from "../Hooks/useAuthContext";
-import { useLogout } from "../Hooks/useLogout";
-import "../styles/style.css";
+import { Button, Text, Img } from "../components"
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
+import { useAuthContext } from "../Hooks/useAuthContext"
+import { useLogout } from "../Hooks/useLogout"
 
 export default function TopBanner() {
-  const { user } = useAuthContext();
-  const { logout } = useLogout();
+  const { user } = useAuthContext()
+  const { logout } = useLogout()
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
   const handleClick = () => {
-    logout();
-  };
+    logout()
+  }
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen)
+  }
 
   return (
     <div>
@@ -54,55 +59,80 @@ export default function TopBanner() {
             </div>
           </div>
         </div>
-        <div className="rounded-[10px] p-6 shadow-lg mt-[-40px]">
-          <div className="flex flex-wrap items-center justify-center gap-20 md:flex-col">
-            <Link
-              to="/"
-              className="flex items-center justify-center h-14 min-w-[140px] border-2 border-royalblue-300 rounded-[34px] bg-royalblue-100 px-6 py-3 text-center font-roboto text-[16px] font-medium tracking-wide text-royalblue-700 shadow-lg hover:bg-royalblue-200 hover:brightness-110 transition-all duration-300"
-            >
-              Home
-            </Link>
-            {!user && (
+        <div>
+          <div className="rounded-[30px] bg-teal-700 p-3">
+            <div className="flex gap-9 self-end md:flex-col">
               <Link
-                to="/loginpage"
-                className="flex items-center justify-center h-14 min-w-[140px] border-2 border-royalblue-300 rounded-[34px] bg-royalblue-100 px-6 py-3 text-center font-roboto text-[16px] font-medium tracking-wide text-royalblue-700 shadow-lg hover:bg-royalblue-200 hover:brightness-110 transition-all duration-300"
+                to="/"
+                className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5"
               >
-                Login
+                HOME
               </Link>
-            )}
-            {!user && (
+              {!user && (
+                <>
+                  <Link
+                    to="/loginpage"
+                    className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5"
+                  >
+                    LOGIN
+                  </Link>
+                  <Link
+                    to="/registrationpage"
+                    className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5"
+                  >
+                    SIGN UP
+                  </Link>
+                </>
+              )}
               <Link
-                to="/registrationpage"
-                className="flex items-center justify-center h-14 min-w-[140px] border-2 border-royalblue-300 rounded-[34px] bg-royalblue-100 px-6 py-3 text-center font-roboto text-[16px] font-medium tracking-wide text-royalblue-700 shadow-lg hover:bg-royalblue-200 hover:brightness-110 transition-all duration-300"
+                to="/aboutpage"
+                className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5"
               >
-                Sign Up
+                ABOUT
               </Link>
-            )}
-            <Link
-              to="/aboutpage"
-              className="flex items-center justify-center h-14 min-w-[140px] border-2 border-royalblue-300 rounded-[34px] bg-royalblue-100 px-6 py-3 text-center font-roboto text-[16px] font-medium tracking-wide text-royalblue-700 shadow-lg hover:bg-royalblue-200 hover:brightness-110 transition-all duration-300"
-            >
-              About
-            </Link>
-            {user && (
-              <Link
-                to="/Pop"
-                className="flex items-center justify-center h-14 min-w-[140px] border-2 border-royalblue-300 rounded-[34px] bg-royalblue-100 px-6 py-3 text-center font-roboto text-[16px] font-medium tracking-wide text-royalblue-700 shadow-lg hover:bg-royalblue-200 hover:brightness-110 transition-all duration-300"
-              >
-                Map
-              </Link>
-            )}
-            {user && (
-              <Button
-                onClick={handleClick}
-                className="flex items-center justify-center h-14 min-w-[140px] border-2 border-royalblue-300 rounded-[34px] bg-royalblue-100 px-6 py-3 text-center font-roboto text-[16px] font-medium tracking-wide text-royalblue-700 shadow-lg hover:bg-royalblue-200 hover:brightness-110 transition-all duration-300"
-              >
-                Logout
-              </Button>
-            )}
+
+              {user && (
+                <div className="relative">
+                  <button
+                    onClick={toggleDropdown}
+                    className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5"
+                  >
+                    MAP
+                  </button>
+                  {isDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg">
+                      <Link
+                        to="/Pop"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={toggleDropdown}
+                      >
+                        View Map
+                      </Link>
+                      <Link
+                        to="/Buildings"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={toggleDropdown}
+                      >
+                        Search Location
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {user && (
+                <Button
+                  onClick={handleClick}
+                  className="flex h-[92px] min-w-[128px] flex-row items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs sm:px-5"
+                >
+                  LOGOUT
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
+

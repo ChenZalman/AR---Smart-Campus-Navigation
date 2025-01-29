@@ -23,8 +23,8 @@ const Model = () => {
     <group
       ref={group}
       rotation={[0, THREE.MathUtils.degToRad(25), 0]}
-      position={[0.2, -1, 0]}
-      scale={[1.2, 1.2, 1.2]}
+      position={[-0.15, -0.5, 0.5]}
+      scale={[1, 1, 1]}
     >
       <primitive object={scene} />
     </group>
@@ -46,21 +46,13 @@ const EnhancedHebrewSpeakingAvatar = () => {
   const [hebrewVoices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
   const [test, setTest] = useState(0);
-  const {buildingInfo} = useBuildingContext()
+  const {dispatch,buildingInfo} = useBuildingContext()
   const [paragraph,setParagraph] = useState(buildingInfo)
 
     //const paragraph = 'מעונות הסטודנטים ממוקמים בלב העיר חולון בקמפוס HIT מכון טכנולוגי חולון ומעניקים סביבת מגורים נעימה, נוחה וקרובה ללימודים.';
   useEffect(() =>{
       setParagraph(buildingInfo)
    },[buildingInfo])
-
-  function func1() {
-    setTest(1); // trigger the effect
-  }
-
-  function func2() {
-    setTest(2); // trigger the effect
-  }
 
   // Load voices only once, and if voices change, update them.
   useEffect(() => {
@@ -87,22 +79,12 @@ const EnhancedHebrewSpeakingAvatar = () => {
       utterance.rate = 0.8;
       utterance.pitch = 1;
       window.speechSynthesis.speak(utterance);
+      if(paragraph != "")
+      {
+        dispatch({type: 0, payload:{discription: ""}})
+      }
     }
   }, [paragraph,selectedVoice]); // Trigger speech when voice is selected
-
-  // When `test` changes (from button press), you can force a voice reload
-  // useEffect(() => {
-  //   if (test === 1 || test === 2) {
-  //     // Check if voice is set, if not, set it manually or force speech
-  //     if (selectedVoice) {
-  //       const utterance = new SpeechSynthesisUtterance(paragraph);
-  //       utterance.voice = selectedVoice;
-  //       utterance.rate = 0.8;
-  //       utterance.pitch = 1;
-  //       window.speechSynthesis.speak(utterance);
-  //     }
-  //   }
-  // }, [test, selectedVoice]); // re-run if test state changes
 
   return (
     <div
@@ -110,10 +92,11 @@ const EnhancedHebrewSpeakingAvatar = () => {
         display: 'flex-inline',
         justifyContent: 'flex-end',
         alignItems: 'center',
-        height: '100vh',
+        // height: '100vh',
+        height: '630px',
         background: '#f0f0f0',
         paddingRight: '50px',
-        width: '400px',
+        width: '300px',
         marginRight: '0',
         marginLeft: 'auto'
       }}
@@ -123,8 +106,6 @@ const EnhancedHebrewSpeakingAvatar = () => {
           <Lights />
           <Model />
         </Canvas>
-        {/* <button onClick={func1}>Press 1</button>
-        <button onClick={func2}>Press 2</button> */}
       </div>
     </div>
   );
