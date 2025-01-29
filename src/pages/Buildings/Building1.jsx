@@ -2,10 +2,13 @@ import React from "react"
 import { Link } from "react-router-dom"
 import HebrewSpeaking3DAvatar from '../../HebrewSpeaking3DAvatar';
 import { useState,useEffect } from "react";
+import { useBuildingContext } from 'Hooks/useBuildingContext';
 
 function Building1() {
 
   const [position, setPosition] = useState(430); // Initial position
+  const {dispatch, buildingInfo} = useBuildingContext()
+  const [paragraph,setParagraph] = useState("")
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +23,11 @@ function Building1() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [window.scrollY]);
+
+  useEffect(() => {
+    setParagraph("בניין 1 – גולומב: קומת קרקע - המרכז לקידום הסטודנט, קפיטריה, מרכז לוגיסטי. קומה 3 – המחלקה למדעי הנתונים. קומה 5 – מעבדת מחשבים. קומה 6 – הפקולטה להנדסת תעשייה וניהול טכנולוגיה")
+    dispatch({type: 1 , payload: {discription: "בניין 1 – גולומב: קומת קרקע - המרכז לקידום הסטודנט, קפיטריה, מרכז לוגיסטי. קומה 3 – המחלקה למדעי הנתונים. קומה 5 – מעבדת מחשבים. קומה 6 – הפקולטה להנדסת תעשייה וניהול טכנולוגיה"}});
+  },[]);
 
   return (
      <div className="flex">

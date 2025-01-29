@@ -2,11 +2,14 @@ import React from "react"
 import { Link } from "react-router-dom"
 import HebrewSpeaking3DAvatar from '../../HebrewSpeaking3DAvatar';
 import { useState,useEffect } from "react";
+import { useBuildingContext } from 'Hooks/useBuildingContext';
 
 function Building2() {
 
   const [position, setPosition] = useState(430); // Initial position
-  
+  const {dispatch, buildingInfo} = useBuildingContext();
+  const [paragraph,setParagraph] = useState(buildingInfo);
+
     useEffect(() => {
       const handleScroll = () => {
         if(window.scrollY > 430 && window.scrollY < 1340)
@@ -16,11 +19,16 @@ function Building2() {
         else
           setPosition(430);
       };
-  
+
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll);
     }, [window.scrollY]);
   
+
+useEffect(() => {
+    setParagraph("בניין 2 - רדיו קסם")
+    dispatch({type: 2 , payload: {discription: "בניין 2 - רדיו קסם"}});
+  },[]);
 
   return (
     <div className="flex">

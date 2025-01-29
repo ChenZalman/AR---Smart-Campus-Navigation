@@ -2,10 +2,13 @@ import React from "react"
 import { Link } from "react-router-dom"
 import HebrewSpeaking3DAvatar from '../../HebrewSpeaking3DAvatar';
 import { useState,useEffect } from "react";
+import { useBuildingContext } from 'Hooks/useBuildingContext';
 
 function Building3() {
   const [position, setPosition] = useState(430); // Initial position
-  
+    const {dispatch, buildingInfo} = useBuildingContext();
+    const [paragraph,setParagraph] = useState(buildingInfo);
+
     useEffect(() => {
       const handleScroll = () => {
         if(window.scrollY > 430 && window.scrollY < 1340)
@@ -19,6 +22,12 @@ function Building3() {
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll);
     }, [window.scrollY]);
+
+    useEffect(() => {
+        setParagraph("בניין 3  – רובינשטיין: קומה 1 – כיתות מחשבים, מרכז המחשוב. קומה 2 – אודיטוריום, מרכז חדשנות ויזמות. קומה 3 – לשכת הנשיא, לשכת מנכל, לשכת סגן הנשיא, מערך שיווק ויחסי ציבור, מחלקת כספים, מחלקת משאבי אנוש, חדר ישיבות. קומה 4 – אולם כנסים")
+        dispatch({type: 2 , payload: {discription: "בניין 3  – רובינשטיין: קומה 1 – כיתות מחשבים, מרכז המחשוב. קומה 2 – אודיטוריום, מרכז חדשנות ויזמות. קומה 3 – לשכת הנשיא, לשכת מנכל, לשכת סגן הנשיא, מערך שיווק ויחסי ציבור, מחלקת כספים, מחלקת משאבי אנוש, חדר ישיבות. קומה 4 – אולם כנסים"}});
+      },[]);
+      
   return (
     <div className="flex">
         <div style={{position: "absolute",top: `${position}px`,right: "100px",}}>
