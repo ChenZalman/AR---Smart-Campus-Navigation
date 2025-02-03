@@ -93,15 +93,13 @@ const EnhancedHebrewSpeakingAvatar = () => {
         justifyContent: 'flex-end',
         alignItems: 'center',
         // height: '100vh',
-        height: '630px',
-        background: '#f0f0f0',
-        paddingRight: '50px',
+        // height: '630px',
+        background: 'transparent',
+        // paddingRight: '50px',
         width: '300px',
-        marginRight: '0',
-        marginLeft: 'auto'
       }}
     >
-      <div style={{ width: '400px', height: '900px' }}>
+      <div style={{ width: '300px', height: '600px' }}>
         <Canvas camera={{ fov: 50, near: 0.1, far: 1000, position: [0, 0, 3.5] }}>
           <Lights />
           <Model />

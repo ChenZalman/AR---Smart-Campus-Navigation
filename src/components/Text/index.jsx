@@ -12,7 +12,7 @@ const Text = ({ children, className = "", as, size = "textxs", ...restProps }) =
 
   const textColorClass = className.includes("text-")
     ? ""
-    : "text-royalblue-700"; // Only apply default color if no custom color is specified
+    : "text-teal-700"; // Only apply default color if no custom color is specified
 
   return (
     <Component

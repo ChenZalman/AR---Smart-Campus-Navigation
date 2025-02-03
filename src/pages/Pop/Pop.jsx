@@ -51,7 +51,8 @@ function Pop() {
     }
 
     return (
-        <div>
+        // <div className="center-container">
+        <div className=" center-container rounded-[40px] bg-teal-100 border-2 border-teal-300 p-[30px] shadow-lg">
             <div className = "image-container">
                 <button onClick={() => OncClickOne()} className= "button buttonONE">1</button>
                 <button onClick={() => OncClickTwo()} className= "button buttonTWO">2</button>

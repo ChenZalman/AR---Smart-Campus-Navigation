@@ -9,7 +9,7 @@ module.exports = {
         black: { "900_3f": "var(--black_900_3f)", "900_4c": "var(--black_900_4c)" },
         blue_gray: { 200: "var(--blue_gray_200)", "700_56": "var(--blue_gray_700_56)" },
         gray: { "800_4c": "var(--gray_800_4c)" },
-        teal: { 700: "var(--teal_700)" },
+        teal: {100: "var(--blue_gray_200)", 300: "#3E6F75", 700: "#005f6b" },
         royalblue: {
           100: "#B0C6E5", 
           300: "#6082B6", 

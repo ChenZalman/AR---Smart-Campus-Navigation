@@ -22,13 +22,14 @@ const BuildingList = () => {
           <Link
             key={building.id}
             to={`/Building${building.id}`}
-            className="flex h-[92px] items-center justify-center rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[14px] font-medium tracking-[0.10px] text-teal-700 shadow-xs hover:bg-teal-700 hover:text-white transition-colors duration-300"
+            className="flex h-[92px] items-center justify-center border-2 border-teal-300 rounded-[34px] bg-blue_gray-200 px-[34px] text-center font-roboto text-[18px] font-medium tracking-[0.10px] text-teal-700 shadow-xs hover:bg-teal-700 hover:text-white transition-colors duration-300"
           >
             {building.name}
           </Link>
         ))}
       </div>
     </div>
+
   )
   
   };
