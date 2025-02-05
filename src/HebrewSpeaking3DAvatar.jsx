@@ -42,6 +42,11 @@ const Lights = () => {
   );
 };
 
+// document.addEventListener("DOMContentLoaded", () => {
+//   document.getElementById("stopButton").addEventListener("click", () => {
+//       window.speechSynthesis.cancel();
+//   })});
+
 const EnhancedHebrewSpeakingAvatar = () => {
   const [hebrewVoices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
@@ -100,6 +105,7 @@ const EnhancedHebrewSpeakingAvatar = () => {
       }}
     >
       <div style={{ width: '300px', height: '600px' }}>
+      <button className = "flex items-center justify-center h-10 w-[160px] border-2 border-teal-300 rounded-[34px] bg-teal-100 px-6 py-3 text-center font-roboto text-[16px] font-medium tracking-wide text-teal-700 shadow-lg hover:brightness-110 transition-all duration-300" onClick = {() => {window.speechSynthesis.cancel();}} id="stopButton">Stop Talking</button>
         <Canvas camera={{ fov: 50, near: 0.1, far: 1000, position: [0, 0, 3.5] }}>
           <Lights />
           <Model />
